@@ -14,17 +14,29 @@ const Pages: CollectionConfig = {
   },
   fields: [
     {
-      name: "title",
-      label: "Titel",
-      type: "text",
+      type: "row",
+      fields: [
+        {
+          name: "title",
+          label: "Titel",
+          type: "text",
+        },
+        {
+          name: "order",
+          label: "Reihenfolge",
+          type: "number",
+          defaultValue: 0,
+        },
+      ],
     },
+
     {
       name: "description",
       label: "Beschreibung",
       type: "textarea",
     },
     {
-      name: "route",
+      name: "path",
       label: "Pfad",
       type: "text",
       admin: { position: "sidebar", readOnly: true },
@@ -32,15 +44,15 @@ const Pages: CollectionConfig = {
         beforeChange: [
           ({ data }) => {
             if (data && data.breadcrumbs) {
-              const route = data!.breadcrumbs.at(-1).url;
-              return route === "/null" ? "/" : route;
+              const path = data!.breadcrumbs.at(-1).url;
+              return path === "/null" ? "/" : path;
             }
           },
         ],
       },
     },
     {
-      name: "path",
+      name: "breadcrumbss",
       label: "Breadcrumbs",
       type: "text",
       admin: {
@@ -49,11 +61,19 @@ const Pages: CollectionConfig = {
       hooks: {
         beforeValidate: [
           ({ data }) => {
-            return data.slug
+            return data.title === "Startseite" ? "" : data.title
               .replace(/ß/g, "ss")
               .replace(/ü/g, "ue")
               .replace(/ö/g, "oe")
               .replace(/ä/g, "ae")
+              .replace(/&/g, "und")
+              .replace(/,/g, "")
+              .replace(/'/g, "")
+              .replace(/"/g, "")
+              .replace(/\(/g, "")
+              .replace(/\)/g, "")
+              .replace(/\./g, "")
+              .replace(/\?/g, "")
               .replace(/ /g, "-")
               .replace(/[^\w-]+/g, "")
               .replace(/\//g, "-")

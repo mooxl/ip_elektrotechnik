@@ -1,4 +1,5 @@
 import { buildConfig } from "payload/config";
+import nestedDocs from "@payloadcms/plugin-nested-docs";
 import path from "path";
 import Pages from "@/collections/Pages";
 import Posts from "@/collections/Posts";
@@ -24,4 +25,11 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve("/", "types.ts"),
   },
+  plugins: [
+    nestedDocs({
+      collections: ["pages"],
+      generateURL: (docs) =>
+        docs.reduce((url, doc) => `${url}/${doc.breadcrumbss}`, ""),
+    }),
+  ],
 });

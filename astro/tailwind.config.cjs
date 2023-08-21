@@ -3,14 +3,19 @@ module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     fontFamily: {
-      plex: ["Plex", "sans-serif"],
+      inter: ["Inter", "sans-serif"],
+    },
+    container: {
+      center: true,
+      padding: "10px",
     },
     extend: {
       colors: {
-        gray: {
-          DEFAULT: "#111111",
-          light: "#888888",
-          dark: "#222222",
+        mint: {
+          DEFAULT: "#00B1AC",
+        },
+        brown: {
+          DEFAULT: "#F0E7D8",
         },
       },
     },

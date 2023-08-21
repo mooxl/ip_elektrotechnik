@@ -18,9 +18,17 @@ export interface Config {
 export interface Page {
   id: string;
   title?: string;
+  order?: number;
   description?: string;
-  route?: string;
   path?: string;
+  breadcrumbss?: string;
+  parent?: string | Page;
+  breadcrumbs?: {
+    doc?: string | Page;
+    url?: string;
+    label?: string;
+    id?: string;
+  }[];
   updatedAt: string;
   createdAt: string;
 }

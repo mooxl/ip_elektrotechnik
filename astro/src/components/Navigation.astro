@@ -1,0 +1,81 @@
+---
+import type { Page } from "@/types";
+import { getPages } from "@/utils/payload";
+
+export interface PageWithChildren extends Page {
+  children: PageWithChildren[];
+}
+
+const pages = await getPages();
+const pageMap = new Map<string, PageWithChildren>();
+pages.forEach((page) => {
+  const pageWithChildren: PageWithChildren = { ...page, children: [] };
+  pageMap.set(page.id, pageWithChildren);
+});
+pages.forEach((page) => {
+  if (page.parent) {
+    const parentId =
+      typeof page.parent === "string" ? page.parent : page.parent.id;
+    const parent = pageMap.get(parentId);
+    if (parent) {
+      parent.children.push(pageMap.get(page.id) as PageWithChildren);
+    }
+  }
+});
+
+const navigation: PageWithChildren[] = [];
+pageMap.forEach((page) => {
+  if (
+    page.title !== "Startseite" &&
+    (!page.parent || typeof page.parent === "string")
+  ) {
+    navigation.push(page);
+  }
+});
+const sortNavigation = (pages: PageWithChildren[]) => {
+  pages.sort((a, b) => {
+    const orderA = a.order || Infinity;
+    const orderB = b.order || Infinity;
+    return orderA - orderB;
+  });
+
+  pages.forEach((page) => {
+    sortNavigation(page.children);
+  });
+};
+sortNavigation(navigation);
+console.log(navigation);
+---
+
+<nav class="text-mint fixed w-full bg-white h-14">
+  <div class="container rounded-xl flex justify-between items-center h-full">
+    <h1 class="font-bold text-3xl">Elektrotechnik</h1>
+    <div class="flex gap-x-10 text-lg h-full items-center">
+      {
+        navigation.map((item) => (
+          <div class="relative h-full flex items-center group">
+            <a
+              href={item.path}
+              class="px-4 py-1 hover:bg-brown hover:bg-opacity-50 rounded-lg"
+            >
+              {item.title}
+            </a>
+            {item.children.length > 0 && (
+              <div class="absolute top-full -left-4 p-4 space-y-2 bg-white whitespace-nowrap rounded-b-lg invisible group-hover:visible">
+                {item.children.map((child) => (
+                  <a
+                    href={child.path}
+                    class="block px-4 py-1 hover:bg-brown hover:bg-opacity-50 rounded-lg"
+                  >
+                    {child.title}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))
+      }
+      <a href="/blog">Blog</a>
+    </div>
+  </div>
+</nav>
