@@ -1,6 +1,10 @@
 import { CollectionConfig } from "payload/types";
 const Posts: CollectionConfig = {
   slug: "posts",
+  labels: {
+    singular: "Blogeintrag",
+    plural: "Blogeinträge",
+  },
   admin: {
     defaultColumns: ["title", "author", "status"],
     useAsTitle: "title",
@@ -14,7 +18,6 @@ const Posts: CollectionConfig = {
     afterChange: [
       async () => {
         console.log(process.env.TOKEN);
-
         try {
           process.env.NODE_ENV !== "development" &&
             console.log(
@@ -29,8 +32,8 @@ const Posts: CollectionConfig = {
                   body: JSON.stringify({
                     event_type: "payload_update",
                   }),
-                }
-              )
+                },
+              ),
             );
         } catch (e) {
           console.log(e);

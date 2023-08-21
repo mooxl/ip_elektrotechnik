@@ -1,5 +1,6 @@
 import { buildConfig } from "payload/config";
 import path from "path";
+import Pages from "@/collections/Pages";
 import Posts from "@/collections/Posts";
 import Users from "@/collections/Users";
 import Media from "@/collections/Media";
@@ -19,7 +20,7 @@ export default buildConfig({
       },
     }),
   },
-  collections: [Posts, Users, Media],
+  collections: [Pages, Posts, Users, Media],
   typescript: {
     outputFile: path.resolve("/", "types.ts"),
   },

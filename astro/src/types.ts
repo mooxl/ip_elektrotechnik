@@ -8,11 +8,21 @@
 
 export interface Config {
   collections: {
+    pages: Page;
     posts: Post;
     users: User;
     media: Media;
   };
   globals: {};
+}
+export interface Page {
+  id: string;
+  title?: string;
+  description?: string;
+  route?: string;
+  path?: string;
+  updatedAt: string;
+  createdAt: string;
 }
 export interface Post {
   id: string;
