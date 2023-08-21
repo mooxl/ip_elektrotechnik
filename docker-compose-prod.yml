@@ -9,6 +9,7 @@ services:
       - "traefik.http.routers.${NAME}-astro.entrypoints=https"
       - "traefik.http.routers.${NAME}-astro.tls.certresolver=httpresolver"
       - traefik.docker.network=traefik_network
+    network_mode: host
     networks:
       - traefik_network
 
