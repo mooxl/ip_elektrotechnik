@@ -10,6 +10,9 @@
   on:click={() => {
     open = !open;
   }}
+  on:touchstart={() => {
+    open = !open;
+  }}
   class="bg-brown py-3 block text-left w-full mt-4 px-4 rounded-lg"
 >
   <div class="flex justify-between">
