@@ -1,0 +1,10 @@
+---
+import type { YoutubeBlock } from "@/types";
+import { YouTube } from "@astro-community/astro-embed-youtube";
+type Props = {
+  block: YoutubeBlock;
+};
+const { block } = Astro.props;
+---
+
+<YouTube id={block.link} />

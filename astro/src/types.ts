@@ -34,20 +34,22 @@ export interface Page {
   createdAt: string;
 }
 export interface ContentBlock {
-  left?: (HeadingBlock | TextBlock | LinkBlock | ImageBlock)[];
-  right?: (HeadingBlock | TextBlock | LinkBlock | ImageBlock)[];
+  left?: (HeadingBlock | TextBlock | LinkBlock | ImageBlock | YoutubeBlock)[];
+  right?: (HeadingBlock | TextBlock | LinkBlock | ImageBlock | YoutubeBlock)[];
   id?: string;
   blockName?: string;
   blockType: 'content';
 }
 export interface HeadingBlock {
+  alignment?: 'left' | 'center' | 'right';
   heading: string;
-  typeHeading: 'mint' | 'underline' | 'brown';
+  typeHeading: 'mint' | 'underline' | 'brown' | 'mint-full';
   id?: string;
   blockName?: string;
   blockType: 'heading';
 }
 export interface TextBlock {
+  alignment?: 'left' | 'center' | 'right';
   text: string;
   id?: string;
   blockName?: string;
@@ -63,6 +65,7 @@ export interface LinkBlock {
   blockType: 'link';
 }
 export interface ImageBlock {
+  alignment?: 'left' | 'center' | 'right';
   image: string | Media;
   id?: string;
   blockName?: string;
@@ -89,6 +92,12 @@ export interface Media {
       filename?: string;
     };
   };
+}
+export interface YoutubeBlock {
+  link: string;
+  id?: string;
+  blockName?: string;
+  blockType: 'youtube';
 }
 export interface FAQBlock {
   faq?: {

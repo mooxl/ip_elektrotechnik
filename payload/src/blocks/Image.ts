@@ -9,6 +9,26 @@ const Image: Block = {
   interfaceName: "ImageBlock",
   fields: [
     {
+      name: "alignment",
+      type: "radio",
+      label: "Ausrichtung",
+      defaultValue: "left",
+      options: [
+        {
+          label: "Links",
+          value: "left",
+        },
+        {
+          label: "Mitte",
+          value: "center",
+        },
+        {
+          label: "Rechts",
+          value: "right",
+        },
+      ],
+    },
+    {
       name: "image",
       type: "upload",
       label: "Bild",

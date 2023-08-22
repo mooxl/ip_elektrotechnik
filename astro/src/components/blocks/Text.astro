@@ -1,0 +1,16 @@
+---
+import type { TextBlock } from "@/types";
+type Props = {
+  block: TextBlock;
+};
+const { block } = Astro.props;
+---
+
+<p
+  class:list={[
+    block.alignment === "center" && "text-center",
+    block.alignment === "right" && "text-right",
+  ]}
+>
+  {block.text}
+</p>

@@ -44,6 +44,8 @@ const sortNavigation = (pages: PageWithChildren[]) => {
   });
 };
 sortNavigation(navigation);
+
+const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <nav class="text-mint fixed top-0 w-full bg-white h-14 shadow-sm z-50">
@@ -57,16 +59,19 @@ sortNavigation(navigation);
           <div class="relative h-full flex items-center group">
             <a
               href={item.path}
-              class="px-4 py-1 hover:bg-brown hover:bg-opacity-50 rounded-lg"
+              class:list={[
+                "px-4 py-1 hover:bg-brown hover:bg-opacity-50 rounded-lg",
+                pathname.includes(item.path!) && "bg-brown bg-opacity-50",
+              ]}
             >
               {item.title}
             </a>
             {item.children.length > 0 && (
-              <div class="absolute text-base top-full -left-4 p-4 space-y-2 bg-white shadow-sm whitespace-nowrap rounded-b-lg invisible group-hover:visible">
+              <div class="absolute text-base top-full -left-4 p-4 space-y-2 gap-y-2 bg-white flex-col flex shadow-sm whitespace-nowrap rounded-b-lg invisible group-hover:visible">
                 {item.children.map((child) => (
                   <a
                     href={child.path}
-                    class="block px-4 py-1 hover:bg-brown hover:bg-opacity-50 rounded-lg"
+                    class:list="px-4 py-2 hover:bg-brown hover:bg-opacity-50 rounded-lg"
                   >
                     {child.title}
                   </a>
@@ -76,7 +81,15 @@ sortNavigation(navigation);
           </div>
         ))
       }
-      <a href="/blog">Blog</a>
+      <a
+        href={"/blog"}
+        class:list={[
+          "px-4 py-1 hover:bg-brown hover:bg-opacity-50 rounded-lg",
+          pathname.includes("/blog"!) && "bg-brown bg-opacity-50",
+        ]}
+      >
+        Blog
+      </a>
     </div>
   </div>
 </nav>

@@ -11,15 +11,34 @@ const { block } = Astro.props;
 
 <div>
   {
-    typeof block.image === "object" && (
-      <div class="rounded-xl overflow-hidden">
-        <AstroImage
-          src={getImageSrc(block.image.sizes?.content?.url!)}
-          alt={block.image.alt!}
-          width={block.image.sizes?.content?.width!}
-          height={block.image.sizes?.content?.height!}
+    typeof block.image === "object" &&
+      (block.image.mimeType === "image/svg+xml" ? (
+        <img
+          src={block.image.url}
+          height="75"
+          width="75"
+          class:list={[
+            block.alignment === "center" && "mx-auto",
+            block.alignment === "right" && "ml-auto",
+          ]}
         />
-      </div>
-    )
+      ) : (
+        <div
+          class:list={[
+            "rounded-xl overflow-hidden",
+            block.alignment === "center" && "mx-auto",
+            block.alignment === "right" && "ml-auto",
+          ]}
+        >
+          <AstroImage
+            src={getImageSrc(
+              block.image.sizes?.content?.url! || block.image.url!
+            )}
+            alt={block.image.alt!}
+            width={block.image.sizes?.content?.width! || block.image.width!}
+            height={block.image.sizes?.content?.height! || block.image.height!}
+          />
+        </div>
+      ))
   }
 </div>

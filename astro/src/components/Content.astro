@@ -3,6 +3,8 @@ import type { ContentBlock } from "@/types";
 import Heading from "@/components/blocks/Heading.astro";
 import Link from "@/components/blocks/Link.astro";
 import Image from "@/components/blocks/Image.astro";
+import Text from "@/components/blocks/Text.astro";
+import Youtube from "@/components/blocks/Youtube.astro";
 type Props = {
   block: ContentBlock;
 };
@@ -18,13 +20,16 @@ const { block } = Astro.props;
             return <Heading {block} />;
           }
           case "text": {
-            return <p>{block.text}</p>;
+            return <Text {block} />;
           }
           case "link": {
             return <Link {block} />;
           }
           case "image": {
             return <Image {block} />;
+          }
+          case "youtube": {
+            return <Youtube {block} />;
           }
         }
       })
@@ -38,13 +43,16 @@ const { block } = Astro.props;
             return <Heading {block} />;
           }
           case "text": {
-            return <p>{block.text}</p>;
+            return <Text {block} />;
           }
           case "link": {
             return <Link {block} />;
           }
           case "image": {
             return <Image {block} />;
+          }
+          case "youtube": {
+            return <Youtube {block} />;
           }
         }
       })

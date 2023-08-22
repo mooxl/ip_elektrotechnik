@@ -9,6 +9,26 @@ const Text: Block = {
   interfaceName: "TextBlock",
   fields: [
     {
+      name: "alignment",
+      type: "radio",
+      label: "Ausrichtung",
+      defaultValue: "left",
+      options: [
+        {
+          label: "Links",
+          value: "left",
+        },
+        {
+          label: "Mitte",
+          value: "center",
+        },
+        {
+          label: "Rechts",
+          value: "right",
+        },
+      ],
+    },
+    {
       name: "text",
       type: "textarea",
       label: "Text",

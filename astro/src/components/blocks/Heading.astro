@@ -2,11 +2,17 @@
 import type { HeadingBlock } from "@/types";
 type Props = {
   block: HeadingBlock;
+  fullWidth?: boolean;
 };
-const { block } = Astro.props;
+const { block, fullWidth } = Astro.props;
 ---
 
-<div>
+<div
+  class:list={[
+    block.alignment === "center" && "text-center",
+    block.alignment === "right" && "text-right",
+  ]}
+>
   {
     block.typeHeading === "mint" ? (
       <h2 class="text-4xl font-bold">
@@ -14,15 +20,22 @@ const { block } = Astro.props;
         {block.heading.split(" ").slice(1).join(" ")}
       </h2>
     ) : block.typeHeading === "underline" ? (
-      <div class="relative max-w-[200px]">
+      <div
+        class:list={[
+          "relative",
+          !fullWidth ? "max-w-[200px]" : "max-w-[450px]",
+        ]}
+      >
         <h2 class="text-2xl ">{block.heading}</h2>
         <div class="absolute -bottom-2 h-[3px] bg-mint w-2/3" />
       </div>
-    ) : (
+    ) : block.typeHeading === "brown" ? (
       <div class="flex items-center gap-x-10">
-        <h2 class="text-2xl flex-shrink-0 font-semibold">{block.heading}</h2>
+        <h2 class="text-2xl flex-shrink-0">{block.heading}</h2>
         <div class="h-[3px] bg-brown-dark w-full" />
       </div>
+    ) : (
+      <h2 class="text-2xl font-semibold text-mint">{block.heading}</h2>
     )
   }
 </div>
