@@ -8,6 +8,7 @@ const { block } = Astro.props;
 
 <p
   class:list={[
+    "whitespace-pre-wrap",
     block.alignment === "center" && "text-center",
     block.alignment === "right" && "text-right",
   ]}
