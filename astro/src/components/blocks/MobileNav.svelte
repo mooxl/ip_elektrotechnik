@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Page } from "@/types";
-    import { slide } from "svelte/transition";
+    import { fade, slide, blur} from "svelte/transition";
 
     interface PageWithChildren extends Page {
         children: PageWithChildren[];
@@ -16,7 +16,7 @@
 <div class="w-5 h-[2px] bg-mint"></div>
 </button>
 {#if open}
-    <div transition:slide={{axis:"x"}} class="h-screen w-auto overflow-hidden bg-white pl-5 pr-10 space-y-5 shadow-md py-5 fixed top-14 right-0">
+    <div transition:slide class="h-screen w-auto overflow-hidden bg-white pl-5 pr-10 space-y-5 shadow-md py-5 fixed top-14 right-0">
     {#each navigation as item}
     <div class="flex flex-col gap-x-3">
         <a class="text-lg font-semibold" href={item.path+"/"}>{item.title}</a>
