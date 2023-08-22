@@ -15,7 +15,7 @@ const { block, index } = Astro.props;
 <div
   class="grid grid-cols-2 gap-x-40 768:gap-y-10 1280:gap-x-20 1024:gap-x-10 rounded-xl justify-between 768:grid-cols-1 bg-white"
 >
-  <div class="space-y-8">
+  <div class="space-y-8 768:space-y-3">
     {
       block.left?.map((block) => {
         switch (block.blockType) {
@@ -38,7 +38,7 @@ const { block, index } = Astro.props;
       })
     }
   </div>
-  <div class="space-y-8">
+  <div class="space-y-8 768:space-y-3">
     {
       block.right?.map((block) => {
         switch (block.blockType) {
