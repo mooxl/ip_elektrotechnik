@@ -12,8 +12,16 @@ export const Media: CollectionConfig = {
     staticURL: "/media",
     staticDir: "media",
     mimeTypes: ["image/*"],
+    imageSizes: [
+      {
+        name: "content",
+        width: 800,
+        formatOptions: {
+          format: "webp",
+        },
+      },
+    ],
   },
-
   fields: [
     {
       name: "alt",

@@ -1,0 +1,32 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import type { Page, Media } from "@/types";
+import { getPages } from "@/utils/payload";
+import { Image } from "@astrojs/image/components";
+import { getImageSrc } from "@/utils/payload";
+import Content from "@/components/Content.astro";
+export const getStaticPaths = async () => {
+  const pages = await getPages();
+  return pages.map((page) => ({
+    params: {
+      path: page.path === "/" ? undefined : page.path?.substring(1),
+    },
+    props: { page },
+  }));
+};
+type Props = {
+  page: Page;
+};
+const { page } = Astro.props;
+---
+
+<Layout title={page.title!} description={page.description!}>
+  {
+    page.blocks?.map((block) => {
+      switch (block.blockType) {
+        case "content":
+          return <Content {block} />;
+      }
+    })
+  }
+</Layout>

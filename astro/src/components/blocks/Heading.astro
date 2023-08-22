@@ -1,0 +1,18 @@
+---
+import type { HeadingBlock } from "@/types";
+type Props = {
+  block: HeadingBlock;
+};
+const { block } = Astro.props;
+---
+
+<div>
+  {
+    block.typeHeading === "mint" && (
+      <h1 class="text-4xl font-bold">
+        <span class="text-mint">{block.heading.split(" ")[0]}</span>{" "}
+        {block.heading.split(" ").slice(1).join(" ")}
+      </h1>
+    )
+  }
+</div>

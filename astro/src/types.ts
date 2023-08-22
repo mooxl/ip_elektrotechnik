@@ -20,6 +20,7 @@ export interface Page {
   title?: string;
   order?: number;
   description?: string;
+  blocks?: ContentBlock[];
   path?: string;
   breadcrumbss?: string;
   parent?: string | Page;
@@ -31,6 +32,62 @@ export interface Page {
   }[];
   updatedAt: string;
   createdAt: string;
+}
+export interface ContentBlock {
+  left?: (HeadingBlock | TextBlock | LinkBlock | ImageBlock)[];
+  right?: (HeadingBlock | TextBlock | LinkBlock | ImageBlock)[];
+  id?: string;
+  blockName?: string;
+  blockType: 'content';
+}
+export interface HeadingBlock {
+  heading: string;
+  typeHeading: 'mint';
+  id?: string;
+  blockName?: string;
+  blockType: 'heading';
+}
+export interface TextBlock {
+  text: string;
+  id?: string;
+  blockName?: string;
+  blockType: 'text';
+}
+export interface LinkBlock {
+  type: 'internal' | 'external';
+  link?: string | Page;
+  url?: string;
+  id?: string;
+  blockName?: string;
+  blockType: 'link';
+}
+export interface ImageBlock {
+  image: string | Media;
+  id?: string;
+  blockName?: string;
+  blockType: 'image';
+}
+export interface Media {
+  id: string;
+  alt?: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
+  sizes?: {
+    content?: {
+      url?: string;
+      width?: number;
+      height?: number;
+      mimeType?: string;
+      filesize?: number;
+      filename?: string;
+    };
+  };
 }
 export interface Post {
   id: string;
@@ -57,16 +114,4 @@ export interface User {
   loginAttempts?: number;
   lockUntil?: string;
   password?: string;
-}
-export interface Media {
-  id: string;
-  alt?: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string;
-  filename?: string;
-  mimeType?: string;
-  filesize?: number;
-  width?: number;
-  height?: number;
 }

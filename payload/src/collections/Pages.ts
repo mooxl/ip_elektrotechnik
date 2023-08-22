@@ -1,3 +1,4 @@
+import Content from "@/blocks/Content";
 import { CollectionConfig } from "payload/types";
 
 const Pages: CollectionConfig = {
@@ -29,11 +30,16 @@ const Pages: CollectionConfig = {
         },
       ],
     },
-
     {
       name: "description",
       label: "Beschreibung",
       type: "textarea",
+    },
+    {
+      name: "blocks",
+      label: "Blöcke",
+      type: "blocks",
+      blocks: [Content],
     },
     {
       name: "path",

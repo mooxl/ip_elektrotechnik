@@ -1,27 +1,53 @@
 ---
-import { Image } from "@astrojs/image/components";
-import { getContentArray } from "@/utils/helpers";
-import { getImageSrc } from "@/utils/payload";
-const { content } = Astro.props;
-const contentArray = getContentArray(content);
+import type { ContentBlock } from "@/types";
+import Heading from "@/components/blocks/Heading.astro";
+import Link from "@/components/blocks/Link.astro";
+import Image from "@/components/blocks/Image.astro";
+type Props = {
+  block: ContentBlock;
+};
+const { block } = Astro.props;
 ---
 
-<div>
-  {
-    contentArray.map((value) => {
-      if (typeof value === "string") {
-        return <article set:html={value} />;
-      } else {
-        return (
-          <Image
-            src={getImageSrc(value.src)}
-            width={value.width}
-            height={value.height}
-            format="webp"
-            alt="hallo"
-          />
-        );
-      }
-    })
-  }
+<div class="flex gap-x-40 justify-between">
+  <div class="flex-1 space-y-4">
+    {
+      block.left?.map((block) => {
+        switch (block.blockType) {
+          case "heading": {
+            return <Heading {block} />;
+          }
+          case "text": {
+            return <p>{block.text}</p>;
+          }
+          case "link": {
+            return <Link {block} />;
+          }
+          case "image": {
+            return <Image {block} />;
+          }
+        }
+      })
+    }
+  </div>
+  <div class="flex-1 space-y-4">
+    {
+      block.right?.map((block) => {
+        switch (block.blockType) {
+          case "heading": {
+            return <Heading {block} />;
+          }
+          case "text": {
+            return <p>{block.text}</p>;
+          }
+          case "link": {
+            return <Link {block} />;
+          }
+          case "image": {
+            return <Image {block} />;
+          }
+        }
+      })
+    }
+  </div>
 </div>

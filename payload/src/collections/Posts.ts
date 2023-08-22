@@ -17,7 +17,6 @@ const Posts: CollectionConfig = {
   hooks: {
     afterChange: [
       async () => {
-        console.log(process.env.TOKEN);
         try {
           process.env.NODE_ENV !== "development" &&
             console.log(

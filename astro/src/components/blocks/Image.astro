@@ -1,0 +1,25 @@
+---
+import type { ImageBlock } from "@/types";
+import { getImageSrc } from "@/utils/payload";
+import { Image as AstroImage } from "@astrojs/image/components";
+
+type Props = {
+  block: ImageBlock;
+};
+const { block } = Astro.props;
+---
+
+<div>
+  {
+    typeof block.image === "object" && (
+      <div class="rounded-xl overflow-hidden">
+        <AstroImage
+          src={getImageSrc(block.image.sizes?.content?.url!)}
+          alt={block.image.alt!}
+          width={block.image.sizes?.content?.width!}
+          height={block.image.sizes?.content?.height!}
+        />
+      </div>
+    )
+  }
+</div>
