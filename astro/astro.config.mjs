@@ -10,6 +10,7 @@ export default defineConfig({
   build: {
     inlineStylesheets: "auto",
   },
+  site: "https://elektrotechnik-studieren.info",
   integrations: [
     tailwind({
       config: {

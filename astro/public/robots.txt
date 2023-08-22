@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elektrotechnik-studieren.info/sitemap-index.xml
