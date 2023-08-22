@@ -1,4 +1,6 @@
 import Content from "@/blocks/Content";
+import FAQ from "@/blocks/FAQ";
+import Heading from "@/blocks/Heading";
 import { CollectionConfig } from "payload/types";
 
 const Pages: CollectionConfig = {
@@ -39,7 +41,7 @@ const Pages: CollectionConfig = {
       name: "blocks",
       label: "Blöcke",
       type: "blocks",
-      blocks: [Content],
+      blocks: [Content, Heading, FAQ],
     },
     {
       name: "path",

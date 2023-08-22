@@ -3,6 +3,9 @@ import Layout from "@/layouts/Layout.astro";
 import type { Page } from "@/types";
 import { getPages } from "@/utils/payload";
 import Content from "@/components/Content.astro";
+import Heading from "@/components/blocks/Heading.astro";
+import FAQ from "@/components/blocks/FAQ.svelte";
+import Accordion from "@/components/blocks/FAQ.svelte";
 export const getStaticPaths = async () => {
   const pages = await getPages();
   return pages.map((page) => ({
@@ -28,6 +31,10 @@ const { page } = Astro.props;
       switch (block.blockType) {
         case "content":
           return <Content {block} />;
+        case "heading":
+          return <Heading {block} />;
+        case "FAQ":
+          return block.faq?.map((faq) => <FAQ faq={faq} client:load />);
       }
     })
   }

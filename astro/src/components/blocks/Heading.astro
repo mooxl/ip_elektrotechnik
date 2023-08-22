@@ -13,13 +13,16 @@ const { block } = Astro.props;
         <span class="text-mint">{block.heading.split(" ")[0]}</span>{" "}
         {block.heading.split(" ").slice(1).join(" ")}
       </h2>
+    ) : block.typeHeading === "underline" ? (
+      <div class="relative max-w-[200px]">
+        <h2 class="text-2xl ">{block.heading}</h2>
+        <div class="absolute -bottom-2 h-[3px] bg-mint w-2/3" />
+      </div>
     ) : (
-      block.typeHeading === "underline" && (
-        <div class="relative max-w-[200px]">
-          <h2 class="text-2xl ">{block.heading}</h2>
-          <div class="absolute -bottom-2 h-[3px] bg-mint w-2/3" />
-        </div>
-      )
+      <div class="flex items-center gap-x-10">
+        <h2 class="text-2xl flex-shrink-0 font-semibold">{block.heading}</h2>
+        <div class="h-[3px] bg-brown-dark w-full" />
+      </div>
     )
   }
 </div>

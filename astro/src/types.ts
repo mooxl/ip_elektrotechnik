@@ -20,7 +20,7 @@ export interface Page {
   title?: string;
   order?: number;
   description?: string;
-  blocks?: ContentBlock[];
+  blocks?: (ContentBlock | HeadingBlock | FAQBlock)[];
   path?: string;
   breadcrumbss?: string;
   parent?: string | Page;
@@ -42,7 +42,7 @@ export interface ContentBlock {
 }
 export interface HeadingBlock {
   heading: string;
-  typeHeading: 'mint' | 'underline';
+  typeHeading: 'mint' | 'underline' | 'brown';
   id?: string;
   blockName?: string;
   blockType: 'heading';
@@ -89,6 +89,16 @@ export interface Media {
       filename?: string;
     };
   };
+}
+export interface FAQBlock {
+  faq?: {
+    question: string;
+    answer: string;
+    id?: string;
+  }[];
+  id?: string;
+  blockName?: string;
+  blockType: 'FAQ';
 }
 export interface Post {
   id: string;

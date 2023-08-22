@@ -44,7 +44,9 @@ const { title, description, landing } = Astro.props;
         <div class="absolute top-14 -z-10 left-0 h-40 bg-brown w-full" />
       )
     }
-    <main class="pt-32 pb-12 container space-y-20 min-h-screen">
+    <main
+      class="container my-32 py-20 space-y-20 px-60 min-h-screen bg-white rounded-2xl"
+    >
       <slot />
     </main>
     <Footer />
