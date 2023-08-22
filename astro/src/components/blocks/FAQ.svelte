@@ -10,13 +10,11 @@
   on:click={() => {
     open = !open;
   }}
-  on:touchstart={() => {
-    open = !open;
-  }}
+
   class="bg-brown py-3 block text-left w-full mt-4 px-4 rounded-lg"
 >
   <div class="flex justify-between">
-    <h3 class="text-xl">{faq.question}</h3>
+    <h3 class="text-xl 768:text-lg">{faq.question}</h3>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
