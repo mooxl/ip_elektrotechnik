@@ -42,7 +42,7 @@ export interface ContentBlock {
 }
 export interface HeadingBlock {
   heading: string;
-  typeHeading: 'mint';
+  typeHeading: 'mint' | 'underline';
   id?: string;
   blockName?: string;
   blockType: 'heading';
@@ -57,6 +57,7 @@ export interface LinkBlock {
   type: 'internal' | 'external';
   link?: string | Page;
   url?: string;
+  label?: string;
   id?: string;
   blockName?: string;
   blockType: 'link';

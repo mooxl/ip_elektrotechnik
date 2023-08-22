@@ -1,9 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import type { Page, Media } from "@/types";
+import type { Page } from "@/types";
 import { getPages } from "@/utils/payload";
-import { Image } from "@astrojs/image/components";
-import { getImageSrc } from "@/utils/payload";
 import Content from "@/components/Content.astro";
 export const getStaticPaths = async () => {
   const pages = await getPages();
@@ -20,7 +18,11 @@ type Props = {
 const { page } = Astro.props;
 ---
 
-<Layout title={page.title!} description={page.description!}>
+<Layout
+  title={page.title!}
+  description={page.description!}
+  landing={page.title !== "Startseite"}
+>
   {
     page.blocks?.map((block) => {
       switch (block.blockType) {

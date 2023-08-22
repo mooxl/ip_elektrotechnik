@@ -8,11 +8,18 @@ const { block } = Astro.props;
 
 <div>
   {
-    block.typeHeading === "mint" && (
-      <h1 class="text-4xl font-bold">
+    block.typeHeading === "mint" ? (
+      <h2 class="text-4xl font-bold">
         <span class="text-mint">{block.heading.split(" ")[0]}</span>{" "}
         {block.heading.split(" ").slice(1).join(" ")}
-      </h1>
+      </h2>
+    ) : (
+      block.typeHeading === "underline" && (
+        <div class="relative max-w-[200px]">
+          <h2 class="text-2xl ">{block.heading}</h2>
+          <div class="absolute -bottom-2 h-[3px] bg-mint w-2/3" />
+        </div>
+      )
     )
   }
 </div>

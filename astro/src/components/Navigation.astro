@@ -46,7 +46,7 @@ const sortNavigation = (pages: PageWithChildren[]) => {
 sortNavigation(navigation);
 ---
 
-<nav class="text-mint fixed w-full bg-white h-14">
+<nav class="text-mint fixed w-full bg-white h-14 shadow-sm z-50">
   <div class="container rounded-xl flex justify-between items-center h-full">
     <a href="/">
       <h1 class="font-bold text-3xl">Elektrotechnik</h1>
@@ -62,7 +62,7 @@ sortNavigation(navigation);
               {item.title}
             </a>
             {item.children.length > 0 && (
-              <div class="absolute top-full -left-4 p-4 space-y-2 bg-white whitespace-nowrap rounded-b-lg invisible group-hover:visible">
+              <div class="absolute text-base top-full -left-4 p-4 space-y-2 bg-white shadow-sm whitespace-nowrap rounded-b-lg invisible group-hover:visible">
                 {item.children.map((child) => (
                   <a
                     href={child.path}

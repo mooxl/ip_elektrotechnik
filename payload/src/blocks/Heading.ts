@@ -21,6 +21,7 @@ const Heading: Block = {
       required: true,
       options: [
         { label: "Erstes Wort in Mint", value: "mint" },
+        { label: "Mint unterstrichen", value: "underline" },
       ],
     },
   ],

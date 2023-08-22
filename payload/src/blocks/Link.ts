@@ -37,6 +37,7 @@ const Link: Block = {
         condition: (_, data) => data.type === "external",
       },
     },
+    { name: "label", type: "text", label: "Angezeigter Text" },
   ],
 };
 

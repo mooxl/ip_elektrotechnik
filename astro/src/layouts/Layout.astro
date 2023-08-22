@@ -1,12 +1,14 @@
 ---
 import Navigation from "@/components/Navigation.astro";
+import Footer from "@/components/Footer.astro";
 import ViewTransitions from "astro/components/ViewTransitions.astro";
 
 export interface Props {
   title: string;
   description: string;
+  landing: boolean;
 }
-const { title, description } = Astro.props;
+const { title, description, landing } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -37,8 +39,14 @@ const { title, description } = Astro.props;
   </head>
   <body class="font-inter">
     <Navigation />
-    <main class="pt-32 pb-12 container px-60">
+    {
+      landing && (
+        <div class="absolute top-14 -z-10 left-0 h-40 bg-brown w-full" />
+      )
+    }
+    <main class="pt-32 pb-12 container space-y-20 min-h-screen">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
