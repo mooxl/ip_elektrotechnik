@@ -34,7 +34,13 @@ const { page } = Astro.props;
         case "heading":
           return <Heading {block} />;
         case "FAQ":
-          return block.faq?.map((faq) => <FAQ faq={faq} client:load />);
+          return (
+            <div>
+              {block.faq?.map((faq) => (
+                <FAQ faq={faq} client:load />
+              ))}
+            </div>
+          );
       }
     })
   }
