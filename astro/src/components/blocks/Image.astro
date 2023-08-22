@@ -17,6 +17,7 @@ const { block } = Astro.props;
           src={block.image.url}
           height="75"
           width="75"
+          alt={block.image.alt!}
           class:list={[
             block.alignment === "center" && "mx-auto",
             block.alignment === "right" && "ml-auto",
