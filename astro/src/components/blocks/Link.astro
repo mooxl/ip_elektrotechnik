@@ -10,7 +10,7 @@ const { block } = Astro.props;
   {
     block.type === "internal" && typeof block.link === "object" && (
       <a
-        href={block.link.path}
+        href={block.link.path + "/"}
         class="inline-block bg-brown font-semibold text-lg rounded-xl py-2 px-10 hover:bg-brown-dark transition-colors"
       >
         {block.label || block.link.title}
