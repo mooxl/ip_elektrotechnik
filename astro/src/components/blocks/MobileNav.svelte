@@ -10,7 +10,7 @@
     console.log(navigation)
 </script>
 
-<button class="space-y-1" on:click={()=>{open = !open}}>
+<button class="space-y-1 p-1" on:click={()=>{open = !open}}>
 <div class="w-5 h-[2px] bg-mint"></div>
 <div class="w-5 h-[2px] bg-mint"></div>
 <div class="w-5 h-[2px] bg-mint"></div>
@@ -26,7 +26,7 @@
         
     </div>
     {/each}
-    <a class="text-lg font-semibold" href="/impressum">Impressum</a>
-        <a class="text-lg font-semibold" href="/datenschutz">Datenschutz</a>
+    <a class="text-lg font-semibold block" href="/impressum">Impressum</a>
+        <a class="text-lg font-semibold block" href="/datenschutz">Datenschutz</a>
     </div>
 {/if}
