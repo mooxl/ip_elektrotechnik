@@ -9,18 +9,21 @@ import svelte from "@astrojs/svelte";
 export default defineConfig({
   compressHTML: true,
   build: {
-    inlineStylesheets: "auto"
+    inlineStylesheets: "auto",
   },
-  experimental: {
-    viewTransitions: true
-  },
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), image({
-    serviceEntryPoint: "@astrojs/image/sharp"
-  }), prefetch({
-    selector: "a"
-  }), sitemap(), svelte()]
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+    prefetch({
+      selector: "a",
+    }),
+    sitemap(),
+    svelte(),
+  ],
 });
