@@ -15,17 +15,17 @@
 <div class="w-5 h-[2px] bg-mint"></div>
 </button>
 {#if open}
-    <div transition:slide class="h-screen w-auto overflow-hidden bg-white pl-5 pr-10 space-y-5 shadow-md py-5 fixed top-14 right-0">
+    <div transition:slide={{axis:"x"}} class="h-screen w-auto overflow-hidden bg-white pl-5 pr-10 space-y-5 shadow-md py-5 fixed top-14 right-0">
     {#each navigation as item}
     <div class="flex flex-col gap-x-3">
-        <a class="text-lg font-semibold" href={item.path+"/"}>{item.title}</a>
+        <a class="text-lg font-semibold whitespace-nowrap" href={item.path+"/"}>{item.title}</a>
         {#each item.children as child}
-        <a href={child.path+"/"} class="text-base">{child.title}</a>
+        <a href={child.path+"/"} class="text-base whitespace-nowrap">{child.title}</a>
         {/each}
         
     </div>
     {/each}
-    <a class="text-lg font-semibold block" href="/impressum">Impressum</a>
-        <a class="text-lg font-semibold block" href="/datenschutz">Datenschutz</a>
+    <a class="text-lg font-semibold block whitespace-nowrap" href="/impressum">Impressum</a>
+        <a class="text-lg font-semibold block whitespace-nowrap" href="/datenschutz">Datenschutz</a>
     </div>
 {/if}
