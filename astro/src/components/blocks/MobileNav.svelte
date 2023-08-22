@@ -6,7 +6,7 @@
         children: PageWithChildren[];
     }
     export let navigation: PageWithChildren[];
-    let open = true;
+    let open = false;
     console.log(navigation)
 </script>
 
@@ -23,9 +23,10 @@
         {#each item.children as child}
         <a href={child.path+"/"} class="text-base">{child.title}</a>
         {/each}
-        <a class="text-lg font-semibold" href="/impressum">Impressum</a>
-        <a class="text-lg font-semibold" href="/datenschutz">Datenschutz</a>
+        
     </div>
     {/each}
+    <a class="text-lg font-semibold" href="/impressum">Impressum</a>
+        <a class="text-lg font-semibold" href="/datenschutz">Datenschutz</a>
     </div>
 {/if}
