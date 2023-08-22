@@ -27,10 +27,10 @@ const { page } = Astro.props;
   landing={page.title !== "Startseite"}
 >
   {
-    page.blocks?.map((block) => {
+    page.blocks?.map((block, i) => {
       switch (block.blockType) {
         case "content":
-          return <Content {block} />;
+          return <Content {block} index={i} />;
         case "heading":
           return <Heading {block} fullWidth />;
         case "FAQ":
