@@ -25,7 +25,7 @@
         
     </div>
     {/each}
-    <a class="text-lg font-semibold block whitespace-nowrap" href="/impressum">Impressum</a>
-        <a class="text-lg font-semibold block whitespace-nowrap" href="/datenschutz">Datenschutz</a>
+    <a class="text-lg font-semibold block whitespace-nowrap" href="/impressum/">Impressum</a>
+        <a class="text-lg font-semibold block whitespace-nowrap" href="/datenschutz/">Datenschutz</a>
     </div>
 {/if}
