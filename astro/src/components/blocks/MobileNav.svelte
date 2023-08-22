@@ -7,7 +7,6 @@
     }
     export let navigation: PageWithChildren[];
     let open = false;
-    console.log(navigation)
 </script>
 
 <button class="space-y-1 p-1" on:click={()=>{open = !open}}>
