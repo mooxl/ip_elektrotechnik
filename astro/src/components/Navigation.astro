@@ -85,7 +85,7 @@ const pathname = new URL(Astro.request.url).pathname;
         ))
       }
       <a
-        href={"/blog"}
+        href={"/blog/"}
         class:list={[
           "px-4 py-1 hover:bg-brown hover:bg-opacity-50 rounded-lg",
           pathname.includes("/blog/"!) && "bg-brown bg-opacity-50",
