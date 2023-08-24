@@ -10,8 +10,12 @@ type Props = {
   index: number;
 };
 const { block } = Astro.props;
-const leftImage = block.left?.find((block) => block.blockType === "image");
-const rightImage = block.right?.find((block) => block.blockType === "image");
+const leftImage = block.left?.find(
+  (block) => block.blockType === "image" || block.blockType === "youtube"
+);
+const rightImage = block.right?.find(
+  (block) => block.blockType === "image" || block.blockType === "youtube"
+);
 const same = leftImage === rightImage;
 ---
 
