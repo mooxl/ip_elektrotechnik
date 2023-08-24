@@ -1,0 +1,51 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import type { Page, Post } from "@/types";
+import { getPages, getPosts } from "@/utils/payload";
+import Content from "@/components/Content.astro";
+import Heading from "@/components/blocks/Heading.astro";
+import FAQ from "@/components/blocks/FAQ.svelte";
+export const getStaticPaths = async () => {
+  const posts = await getPosts();
+  console.log(posts);
+  return posts.map((post) => ({
+    params: {
+      path: post.path?.split("/").at(-1),
+    },
+    props: { post },
+  }));
+};
+type Props = {
+  post: Post;
+};
+const { post } = Astro.props;
+---
+
+<Layout
+  title={post.title!}
+  description={post.description!}
+  landing={post.title !== "Startseite"}
+>
+  <div>
+    <h2 class="text-3xl font-bold">{post.title}</h2>
+    <p class="mt-3 text-lg">{post.description}</p>
+  </div>
+  {
+    post.content.map((block, i) => {
+      switch (block.blockType) {
+        case "content":
+          return <Content {block} index={i} />;
+        case "heading":
+          return <Heading {block} fullWidth />;
+        case "FAQ":
+          return (
+            <div>
+              {block.faq?.map((faq) => (
+                <FAQ faq={faq} client:load />
+              ))}
+            </div>
+          );
+      }
+    })
+  }
+</Layout>

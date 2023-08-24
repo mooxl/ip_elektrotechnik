@@ -111,13 +111,11 @@ export interface FAQBlock {
 }
 export interface Post {
   id: string;
-  title?: string;
-  hallo?: string;
-  publishedDate?: string;
-  content?: {
-    [k: string]: unknown;
-  }[];
-  status?: 'draft' | 'published';
+  title: string;
+  description: string;
+  publishedDate: string;
+  content: (ContentBlock | HeadingBlock | FAQBlock)[];
+  path?: string;
   updatedAt: string;
   createdAt: string;
 }

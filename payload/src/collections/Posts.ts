@@ -1,3 +1,6 @@
+import Content from "@/blocks/Content";
+import FAQ from "@/blocks/FAQ";
+import Heading from "@/blocks/Heading";
 import { CollectionConfig } from "payload/types";
 const Posts: CollectionConfig = {
   slug: "posts",
@@ -14,6 +17,69 @@ const Posts: CollectionConfig = {
     create: () => true,
     update: () => true,
   },
+
+  fields: [
+    {
+      name: "title",
+      label: "Titel",
+      type: "text",
+      required: true,
+      unique: true,
+    },
+    {
+      name: "description",
+      label: "Beschreibung",
+      type: "text",
+      required: true,
+    },
+    {
+      name: "publishedDate",
+      label: "Veröffentlichungsdatum",
+      type: "date",
+      required: true,
+    },
+    {
+      name: "content",
+      type: "blocks",
+      label: "Inhalt",
+      required: true,
+      blocks: [Content, Heading, FAQ],
+    },
+    {
+      name: "path",
+      label: "Breadcrumbs",
+      type: "text",
+      admin: {
+        position: "sidebar",
+        readOnly: true,
+      },
+      hooks: {
+        beforeChange: [
+          ({ data }) => {
+            return "/blog/" + data.title
+              .replace(/ß/g, "ss")
+              .replace(/ü/g, "ue")
+              .replace(/ö/g, "oe")
+              .replace(/ä/g, "ae")
+              .replace(/&/g, "und")
+              .replace(/,/g, "")
+              .replace(/'/g, "")
+              .replace(/"/g, "")
+              .replace(/\(/g, "")
+              .replace(/\)/g, "")
+              .replace(/\./g, "")
+              .replace(/\?/g, "")
+              .replace(/ /g, "-")
+              .replace(/[^\w-]+/g, "")
+              .replace(/\//g, "-")
+              .toLowerCase()
+              .replace(/-$/, "")
+              .replace(/--/g, "-");
+          },
+        ],
+      },
+    },
+  ],
   hooks: {
     afterChange: [
       async () => {
@@ -40,61 +106,6 @@ const Posts: CollectionConfig = {
       },
     ],
   },
-  fields: [
-    {
-      name: "title",
-      type: "text",
-    },
-    {
-      name: "hallo",
-      type: "text",
-    },
-    {
-      name: "publishedDate",
-      type: "date",
-    },
-
-    {
-      name: "content",
-      type: "richText",
-      admin: {
-        elements: ["h2", "h3", "h4", "link", "ol", "ul", "upload"],
-        leaves: ["bold", "italic", "underline"],
-        upload: {
-          collections: {
-            media: {
-              fields: [
-                {
-                  name: "imagel",
-                  type: "upload",
-                  relationTo: "media",
-                  required: true,
-                },
-              ],
-            },
-          },
-        },
-      },
-    },
-    {
-      name: "status",
-      type: "select",
-      options: [
-        {
-          value: "draft",
-          label: "Draft",
-        },
-        {
-          value: "published",
-          label: "Published",
-        },
-      ],
-      defaultValue: "draft",
-      admin: {
-        position: "sidebar",
-      },
-    },
-  ],
 };
 
 export default Posts;

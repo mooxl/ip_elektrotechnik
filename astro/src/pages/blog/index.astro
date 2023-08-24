@@ -1,7 +1,33 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { getPosts } from "@/utils/payload";
+import { isAfter } from "date-fns";
+
+const posts = (await getPosts()).filter((post) =>
+  isAfter(new Date(), new Date(post.publishedDate))
+);
 ---
 
 <Layout title="Blog" description="" landing={false}>
-  <p>Coming soon...</p>
+  <h2 class="text-mint text-5xl font-bold">Blog</h2>
+  <div class="space-y-4">
+    {
+      posts.map((post) => (
+        <a
+          class="flex justify-between gap-x-5 py-5 px-10 bg-brown rounded-lg hover:bg-brown-dark transition-colors"
+          href={post.path + "/"}
+        >
+          <div class="space-y-2 max-w-3xl w-full">
+            <h3 class="text-xl font-bold">{post.title}</h3>
+            <p class="line-clamp-2">{post.description}</p>
+          </div>
+          <img
+            class="w-10"
+            src="/arrow-right-line.svg"
+            alt="Pfeil nach rechts"
+          />
+        </a>
+      ))
+    }
+  </div>
 </Layout>

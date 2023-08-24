@@ -1,4 +1,4 @@
-import type { Page } from "@/types";
+import type { Page, Post } from "@/types";
 
 const url = import.meta.env.DEV
   ? "http://payload:3001"
@@ -6,6 +6,8 @@ const url = import.meta.env.DEV
 
 export const getPages = async () =>
   (await (await fetch(`${url}/api/pages?limit=1000`)).json()).docs as Page[];
+export const getPosts = async () =>
+  (await (await fetch(`${url}/api/posts?limit=1000[]`)).json()).docs as Post[];
 
 export const getImageSrc = (src: string) => {
   if (import.meta.env.DEV) {
