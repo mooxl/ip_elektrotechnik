@@ -9,13 +9,21 @@ type Props = {
   block: ContentBlock;
   index: number;
 };
-const { block, index } = Astro.props;
+const { block } = Astro.props;
+const leftImage = block.left?.find((block) => block.blockType === "image");
+const rightImage = block.right?.find((block) => block.blockType === "image");
+const same = leftImage === rightImage;
 ---
 
 <div
-  class="grid grid-cols-2 gap-x-40 768:gap-y-10 1280:gap-x-20 1024:gap-x-10 rounded-xl justify-between 768:grid-cols-1 bg-white"
+  class="grid grid-cols-2 gap-x-40 768:gap-y-10 order 1280:gap-x-20 1024:gap-x-10 rounded-xl justify-between 768:grid-cols-1 bg-white"
 >
-  <div class="space-y-8 768:space-y-3">
+  <div
+    class:list={[
+      "space-y-8 768:space-y-3",
+      !same && leftImage ? "768:order-2" : "768:order-1",
+    ]}
+  >
     {
       block.left?.map((block) => {
         switch (block.blockType) {
@@ -38,7 +46,12 @@ const { block, index } = Astro.props;
       })
     }
   </div>
-  <div class="space-y-8 768:space-y-3">
+  <div
+    class:list={[
+      "space-y-8 768:space-y-3",
+      !same && rightImage ? "768:order-2" : "768:order-1",
+    ]}
+  >
     {
       block.right?.map((block) => {
         switch (block.blockType) {
