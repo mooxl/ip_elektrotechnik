@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { Page } from "@/types";
-    import { fade, slide, blur} from "svelte/transition";
+    import { slide} from "svelte/transition";
 
     interface PageWithChildren extends Page {
         children: PageWithChildren[];
