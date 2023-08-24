@@ -9,7 +9,7 @@
     let open = false;
 </script>
 
-<button class="space-y-1 p-1" on:click={()=>{open = !open}}>
+<button class="space-y-1 p-1" aria-label="Burger Menu" on:click={()=>{open = !open}}>
 <div class="w-5 h-[2px] bg-mint"></div>
 <div class="w-5 h-[2px] bg-mint"></div>
 <div class="w-5 h-[2px] bg-mint"></div>
