@@ -23,6 +23,7 @@ module.exports = {
         brown: {
           DEFAULT: "#F0E7D8",
           dark: "#e3d3b7",
+          darker: "#ccaf7c",
         },
       },
     },
