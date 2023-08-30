@@ -16,7 +16,7 @@
     "@astrojs/svelte": "^3.1.1",
     "@astrojs/tailwind": "4.0.0",
     "@slate-serializers/template": "^1.0.1",
-    "astro": "^2.10.12",
+    "astro": "^2.10.15",
     "css-select": "5.1.0",
     "date-fns": "^2.30.0",
     "sharp": "^0.32.5",
