@@ -18,7 +18,7 @@
     "express": "^4.17.1",
     "payload": "^1.14.0",
     "tsconfig-paths": "^4.2.0",
-    "@payloadcms/plugin-nested-docs": "^1.0.6"
+    "@payloadcms/plugin-nested-docs": "^1.0.8"
   },
   "devDependencies": {
     "@types/express": "^4.17.9",
