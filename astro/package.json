@@ -15,7 +15,7 @@
     "@astrojs/sitemap": "^2.0.2",
     "@astrojs/svelte": "^3.1.1",
     "@astrojs/tailwind": "4.0.0",
-    "@slate-serializers/template": "^1.0.1",
+    "@slate-serializers/template": "^2.1.0",
     "astro": "^2.10.12",
     "css-select": "5.1.0",
     "date-fns": "^2.30.0",
